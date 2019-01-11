@@ -21,11 +21,12 @@ guessBtn.addEventListener('click', () => {
  let guess = parseInt(guessInput.value);
  // Validate input is a number within acceptable range
  if (isNaN(guess) || guess < 1 || guess > 10) {
-  setMessage(`Please enter a number between ${min} and ${max}!`);
+  setMessage(`Please enter a number between ${min} and ${max}!`, 'red');
  }
 });
 
 // SET MESSAGE FUNCTION
-function setMessage(msg){
-
+function setMessage(msg, color){
+  message.style.color = color;
+  message.textContent = msg;
 };
