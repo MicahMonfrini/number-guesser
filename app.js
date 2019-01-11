@@ -23,6 +23,16 @@ guessBtn.addEventListener('click', () => {
  if (isNaN(guess) || guess < 1 || guess > 10) {
   setMessage(`Please enter a number between ${min} and ${max}!`, 'red');
  }
+ // Check if number is correct
+ if (guess === winningNum) {
+   // Disable further input
+   guessInput.disabled = true;
+   // Display win message
+   setMessage(`You guessed it! The number was ${winningNum}.`, 'green')
+ } else {
+   // Display try again message
+   setMessage(`Nope! ${guess} isn't the right number. Try again!`, 'red')
+ }
 });
 
 // SET MESSAGE FUNCTION
