@@ -27,11 +27,13 @@ guessBtn.addEventListener('click', () => {
  if (guess === winningNum) {
    // Disable further input
    guessInput.disabled = true;
-   // Change input border color
+   // Green border
    guessInput.style.borderColor = 'green';
    // Display win message
-   setMessage(`You guessed it! The number was ${winningNum}.`, 'green')
+   setMessage(`${winningNum} is correct. YOU WIN!`, 'green')
  } else {
+   // Red border
+   guessInput.style.borderColor = 'red';
    // Display try again message
    setMessage(`Nope! ${guess} isn't the right number. Try again!`, 'red')
  }
