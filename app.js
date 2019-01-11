@@ -16,11 +16,16 @@ const game = document.querySelector('#game'),
 minNum.textContent = min;
 maxNum.textContent = max;
 
-// Guess button event listner
+// EVENT LISTENER FOR GUESS INPUT
 guessBtn.addEventListener('click', () => {
  let guess = parseInt(guessInput.value);
  // Validate input is a number within acceptable range
- if (guess === Nan || guess < 1 || guess > 10) {
-  alert('Your guess must be a number between 1 and 10!')
+ if (isNaN(guess) || guess < 1 || guess > 10) {
+  setMessage(`Please enter a number between ${min} and ${max}!`);
  }
 });
+
+// SET MESSAGE FUNCTION
+function setMessage(msg){
+
+};
