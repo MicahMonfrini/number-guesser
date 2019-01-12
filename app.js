@@ -22,45 +22,42 @@ guessBtn.addEventListener('click', () => {
   // Validate input is a number within acceptable range
   if (isNaN(guess) || guess < 1 || guess > 10) {
     setMessage(`Please enter a number between ${min} and ${max}!`, 'red');
+    return;
   } 
   // Number is correct 
   if (guess === winningNum) {
-    gameOver(true, 'win');
+    gameOver(true, `${winningNum} is correct. YOU WIN!`);
   // Number is incorrect
-  } 
-  if (guessesLeft === 0) {
-    gameOver(false, 'lose');
   } else {
     // Remove a guess
     guessesLeft -= 1;
-    // Red border
-    guessInput.style.borderColor = 'red';
-    // Clear input field
-    guessInput.value = '';
-    // Try again message
-    setMessage(`That's not the right number. You have ${guessesLeft} guesses left.`, 'red');
+    // No more guesses
+    if (guessesLeft === 0) {
+      gameOver(false, `You're all out of guesses! The correct number was ${winningNum}.`);
+    // Guesses remain
+    } else {
+      // Red border
+      guessInput.style.borderColor = 'red';
+      // Clear input field
+      guessInput.value = '';
+      // Try again message
+      setMessage(`That's not the right number. You have ${guessesLeft} guesses left.`, 'red');
+    }
   }
 });
 
 // GAME OVER FUNCTION
 
 function gameOver(won, msg) {
+  // Declare color variable
+  let color;
+  won === true ? color = 'green' : 'red';
   // Disable input when game is over
   guessInput.disabled = true;
-  // Win logic
-  if (won === true && msg === 'win'){
-    // Green border
-    guessInput.style.borderColor = 'green';
-    // Display win message
-    setMessage(`${winningNum} is correct. YOU WIN!`, 'green')
-  }
-  // Loss Logic
-  if (won === false && msg === 'lose') {
-    // Green border
-    guessInput.style.borderColor = 'red';
-    // Display win message
-    setMessage(`${winningNum} is correct. YOU WIN!`, 'green')
-  }
+  // Set border color
+  guessInput.style.borderColor = color;
+  // Set message
+  setMessage(msg, color)
 };
 
 // SET MESSAGE FUNCTION
