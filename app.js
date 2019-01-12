@@ -47,11 +47,35 @@ guessBtn.addEventListener('click', () => {
     } else {
       // Red border
       guessInput.style.borderColor = 'red';
+      // Clear input field
+      guessInput.value = '';
       // Try again message
       setMessage(`That's not the right number. You have ${guessesLeft} guesses left.`, 'red');
     }
   }
 });
+
+// GAME OVER FUNCTION
+
+function gameOver(won, msg) {
+  // Disable input when game is over
+  guessInput.disabled = true;
+  // Win logic
+  if (won === true && msg === 'win'){
+    // Green border
+    guessInput.style.borderColor = 'green';
+    // Display win message
+    setMessage(`${winningNum} is correct. YOU WIN!`, 'green')
+  }
+
+  if (won === false && msg === 'lose') {
+    // Green border
+    guessInput.style.borderColor = 'red';
+    // Display win message
+    setMessage(`${winningNum} is correct. YOU WIN!`, 'green')
+  }
+
+};
 
 // SET MESSAGE FUNCTION
 function setMessage(msg, color){
