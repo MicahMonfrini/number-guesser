@@ -15,3 +15,6 @@ vs
 ```javascript
 guessesLeft = guessesLeft -1;
 ```
+# How if/else statements are evaluated in a function
+
+When a function with an if/else statement is called. the if/else statement executes a block of code if a specified condition is true. If the condition is false, another block of code in the function can be executed.
