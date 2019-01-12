@@ -22,24 +22,34 @@ guessBtn.addEventListener('click', () => {
  // Validate input is a number within acceptable range
  if (isNaN(guess) || guess < 1 || guess > 10) {
   setMessage(`Please enter a number between ${min} and ${max}!`, 'red');
- }
- // Check if number is correct
- if (guess === winningNum) {
-   // Disable further input
-   guessInput.disabled = true;
-   // Green border
-   guessInput.style.borderColor = 'green';
-   // Display win message
-   setMessage(`${winningNum} is correct. YOU WIN!`, 'green')
-  // Number is incorrect
- } else {
-   // Subtract 1 from remaining guesses
-   guessesLeft -= -1
-   // Red border
-   guessInput.style.borderColor = 'red';
-   // Display try again message
-   setMessage(`Nope! ${guess} isn't the right number. Try again!`, 'red')
- }
+  // Check if number is correct 
+  } else if (guess === winningNum) {
+    // Disable further input
+    guessInput.disabled = true;
+    // Green border
+    guessInput.style.borderColor = 'green';
+    // Display win message
+    setMessage(`${winningNum} is correct. YOU WIN!`, 'green')
+  // Number is incorrect - no more guesses 
+  // (the reason the number is 1 is because if the user picks wrong on their last guess, the game is over)
+  // (if this was 0, the game over message wouldn't fire until they tried again with no guesses. Bad user experience.)
+  } else if (guessesLeft === 1) {
+    // Disable further input
+    guessInput.disabled = true;
+    // red border
+    guessInput.style.borderColor = 'red';
+    // Game over message
+    setMessage(`You're all out of guesses! The correct answer was ${winningNum}.`, 'red');
+  // Number is incorrect - guesses remain
+  } else {
+    // Remove a guess
+    guessesLeft -= 1;
+    // Red border
+    guessInput.style.borderColor = 'red';
+    // Try again message
+    setMessage(`That's not the right number. You have ${guessesLeft} guesses left.`, 'red');
+    console.log(guessesLeft);
+  }
 });
 
 // SET MESSAGE FUNCTION
