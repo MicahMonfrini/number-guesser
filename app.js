@@ -31,7 +31,10 @@ guessBtn.addEventListener('click', () => {
    guessInput.style.borderColor = 'green';
    // Display win message
    setMessage(`${winningNum} is correct. YOU WIN!`, 'green')
+  // Number is incorrect
  } else {
+   // Subtract 1 from remaining guesses
+   guessesLeft -= -1
    // Red border
    guessInput.style.borderColor = 'red';
    // Display try again message
