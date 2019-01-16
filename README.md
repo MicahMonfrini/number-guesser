@@ -44,3 +44,17 @@ When a function with an if/else statement is called. the if/else statement execu
   }
 ```
 In this block of code, the ```guessesLeft``` subtraction logic has to come before the check for remaining guesses in order for the game to end at the proper point. Otherwise, you'll end up with a "0 remaining guesses" message with the ability for further input.
+
+# Play again functionality and event delegation
+
+In order to play again, we need an event listener on the parent element (the game div). This is because the ```play-again``` class was added after the page was loaded.
+
+```javascript
+game.addEventListener('mousedown', (e) =>{
+  // reload page if play-again class is on guessBtn
+  if (e.target.className === 'play-again') {
+    window.location.reload();
+  }
+})
+```
+We use a mousedown event instead of a click because we don't want the page to reload instantly after the game ends. 

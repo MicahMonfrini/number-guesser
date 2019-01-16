@@ -16,7 +16,17 @@ const game = document.querySelector('#game'),
 minNum.textContent = min;
 maxNum.textContent = max;
 
-// EVENT LISTENER FOR GUESS INPUT
+// EVENT LISTENERS
+
+// Play again
+game.addEventListener('click', (e) =>{
+  // reload page if play-again class is on guessBtn
+  if (e.target.className === 'play-again') {
+    window.location.reload();
+  }
+})
+
+// Guess input
 guessBtn.addEventListener('click', () => {
   let guess = parseInt(guessInput.value);
   // Validate input is a number within acceptable range
