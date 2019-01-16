@@ -43,4 +43,4 @@ When a function with an if/else statement is called. the if/else statement execu
     }
   }
 ```
-In this block of code, the guessesLeft subtraction logic has to come before the check
+In this block of code, the ```guessesLeft``` subtraction logic has to come before the check for remaining guesses in order for the game to end at the proper point. Otherwise, you'll end up with a "0 remaining guesses" message with the ability for further input.
